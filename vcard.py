@@ -17,4 +17,4 @@ class qr_vcard:
         img = qr.make_image(fill_color="black", back_color="white")
 
         # Create the file
-        img.convert("RGB").save("vcard.png")
+        img.convert("RGB").save("img/vcard.png")

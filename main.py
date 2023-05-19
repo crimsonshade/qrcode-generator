@@ -31,11 +31,10 @@ if __name__ == "__main__":
         vcard.generate_vcard()
         fin()
     elif(choice == "2"):
-        url = input("Enter the url: ")
+        url = input("\nEnter the link\n>")
 
         link = qr_link(url)
         link.generate_link()
         fin()
     else:
         print("Wrong number. Try again")
-        quit()

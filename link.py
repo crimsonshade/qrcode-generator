@@ -14,4 +14,4 @@ class qr_link:
         img = qr.make_image(fill_color="black", back_color="white")
 
         # Create the file
-        img.convert("RGB").save("link.png")
+        img.convert("RGB").save("img/link.png")
