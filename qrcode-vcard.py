@@ -1,43 +1,13 @@
-import qrcode
 import os
-
-class qr_vcard:
-    def __init__(self, name, email, phone):
-        self.name = name
-        self.email = email
-        self.phone = phone
-
-    def generate_vcard(self):
-        data = f"BEGIN:VCARD\nVERSION:4.0\nN:{name}\nEMAIL:{email}\nTEL:{phone}\nGENDER:M\nEND:VCARD"
-
-        qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(data)
-        qr.make(fit=True)
-
-        # make the QR code to an image
-        img = qr.make_image(fill_color="black", back_color="white")
-
-        # Create the file
-        img.convert("RGB").save("vcard.png")
-
-class qr_link:
-    def __init__(self, url):
-        self.url = url
-
-    def generate_link(self):
-        data = self.url
-        qr = qrcode.QRCode(version=1, box_size=10, border=5)
-        qr.add_data(data)
-        qr.make(fit=True)
-
-        # make the QR code to an image
-        img = qr.make_image(fill_color="black", back_color="white")
-
-        # Create the file
-        img.convert("RGB").save("link.png")
+from vcard import qr_vcard
+from link import qr_link
 
 def clear_console():
     os.system('clear')
+
+def fin():
+    print("=========================")
+    print("Your qr code got generated.")
 
 if __name__ == "__main__":
     clear_console()
@@ -53,9 +23,19 @@ if __name__ == "__main__":
     clear_console()
 
     if(choice == "1"):
-        name = input("Your name: ")
-        email = input("Your Email: ")
-        phone = input("Your phone number: ")
+        name = input('Enter your Name\n>')
+        email = input("\nYour Email\n>")
+        phone = input("\nYour phone number\n>")
 
         vcard = qr_vcard(name, email, phone)
         vcard.generate_vcard()
+        fin()
+    elif(choice == "2"):
+        url = input("Enter the url: ")
+
+        link = qr_link(url)
+        link.generate_link()
+        fin()
+    else:
+        print("Wrong number. Try again")
+        quit()
